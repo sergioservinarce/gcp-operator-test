@@ -1,0 +1,27 @@
+# permissions for end users to view runesservices.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  labels:
+    app.kubernetes.io/name: clusterrole
+    app.kubernetes.io/instance: runesservice-viewer-role
+    app.kubernetes.io/component: rbac
+    app.kubernetes.io/created-by: gcp-operator-test
+    app.kubernetes.io/part-of: gcp-operator-test
+    app.kubernetes.io/managed-by: kustomize
+  name: runesservice-viewer-role
+rules:
+- apiGroups:
+  - runes.bancognb.com.py
+  resources:
+  - runesservices
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - runes.bancognb.com.py
+  resources:
+  - runesservices/status
+  verbs:
+  - get

@@ -1,0 +1,102 @@
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  annotations:
+    controller-gen.kubebuilder.io/version: v0.11.1
+  creationTimestamp: null
+  name: runesservices.runes.bancognb.com.py
+spec:
+  group: runes.bancognb.com.py
+  names:
+    kind: RunesService
+    listKind: RunesServiceList
+    plural: runesservices
+    singular: runesservice
+  scope: Namespaced
+  versions:
+  - name: v1alpha1
+    schema:
+      openAPIV3Schema:
+        description: RunesService is the Schema for the runesservices API
+        properties:
+          apiVersion:
+            description: 'APIVersion defines the versioned schema of this representation
+              of an object. Servers should convert recognized schemas to the latest
+              internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
+            type: string
+          kind:
+            description: 'Kind is a string value representing the REST resource this
+              object represents. Servers may infer this from the endpoint the client
+              submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+            type: string
+          metadata:
+            type: object
+          spec:
+            description: RunesServiceSpec defines the desired state of RunesService
+            properties:
+              apis:
+                properties:
+                  stage:
+                    type: string
+                required:
+                - stage
+                type: object
+              extraEnv:
+                additionalProperties:
+                  type: string
+                type: object
+              hostAliases:
+                additionalProperties:
+                  type: string
+                type: object
+              image:
+                properties:
+                  repository:
+                    type: string
+                  tag:
+                    type: string
+                required:
+                - repository
+                - tag
+                type: object
+              ingress:
+                properties:
+                  paths:
+                    items:
+                      type: string
+                    type: array
+                required:
+                - paths
+                type: object
+              main:
+                properties:
+                  profile:
+                    type: string
+                required:
+                - profile
+                type: object
+              plugins:
+                items:
+                  type: string
+                type: array
+              runes:
+                properties:
+                  stage:
+                    type: string
+                required:
+                - stage
+                type: object
+              verifyAccessToken:
+                type: string
+            required:
+            - verifyAccessToken
+            type: object
+          status:
+            description: RunesServiceStatus defines the observed state of RunesService
+            type: object
+        type: object
+    served: true
+    storage: true
+    subresources:
+      status: {}

@@ -1,0 +1,12 @@
+apiVersion: runes.bancognb.com.py/v1alpha1
+kind: RunesService
+metadata:
+  labels:
+    app.kubernetes.io/name: runesservice
+    app.kubernetes.io/instance: runesservice-sample
+    app.kubernetes.io/part-of: gcp-operator-test
+    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/created-by: gcp-operator-test
+  name: runesservice-sample
+spec:
+  # TODO(user): Add fields here

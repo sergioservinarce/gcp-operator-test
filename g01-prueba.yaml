@@ -1,0 +1,24 @@
+apiVersion: runes.bancognb.com.py/v1alpha1
+kind: RunesService
+metadata:
+  name: runes-service-ejemplo-01
+spec:
+  apis:
+    stage: work
+  extraEnv:
+    KEYCLOAK_PERSON_AUTH_CLIENT: auth-client
+    KEYCLOAK_PERSON_ADMIN_CLIENT: admin-client
+    KEYCLOAK_PERSON_ADMIN_CLIENT_SECRET: 38a06066-90ac-4643-805d-055064a1d960
+    KEYCLOAK_PERSON_EXCHANGE_CLIENT: exchange-client
+  hostAliases:
+    sqlserver-host: 127.0.0.1
+  image:
+    repository: gcr.io/google-samples/hello-app
+    tag: "1.0"
+  main:
+    profile: Profile-value-env
+  plugins:
+    - oidc
+  runes:
+    stage: work
+  verifyAccessToken: 'true'
